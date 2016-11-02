@@ -7,33 +7,49 @@
     <version>1.0-SNAPSHOT</version>
     <name>FitnessTracker Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+        <springframework.version>4.0.6.RELEASE</springframework.version>
+        <servlet.api.version>3.1.0</servlet.api.version>
+        <jstl.version>1.2</jstl.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>3.2.0.RELEASE</version>
-            <scope>compile</scope>
+            <version>${springframework.version}</version>
         </dependency>
+
+        <!-- Below declared dependencies are included for the servers who may complain about servlet/jstl missing dependency -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.2</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <finalName>FitnessTracker</finalName>
     </build>
 </project>
